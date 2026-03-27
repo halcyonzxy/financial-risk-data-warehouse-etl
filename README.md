@@ -5,7 +5,8 @@
 
 ## 🚀 Project Overview
 
-本项目构建了一套企业级金融风控数据仓库 ETL 全流程解决方案，基于 ODS → DWD → DWS 分层架构，面向期货 / 信贷风控场景。
+本项目是企业级金融风控数仓 ETL 全流程解决方案，基于 ODS → DWD → DWS 标准数仓分层架构构建，专为期货 / 信贷类风控场景量身设计。
+项目从真实业务需求出发，完成数据模型重构、数据清洗逻辑、统一指标口径、全链路数据监控体系建设，达到可直接上线的生产级标准。
 
 ---
 
@@ -17,7 +18,7 @@
 - 真实业务指标（PnL / 持仓 / 风险敞口）
 - 数据质量监控（缺失 / 异常 / 重复）
 - 风控体系（信用风险 / 市场风险 / 持仓风险）
-- 无硬编码，口径可追溯
+- 无硬编码，口径可追溯，可审计
 
 ---
 
@@ -41,10 +42,13 @@
 
 ## ⚙️ Core Tables
 
-- dws_business_indicators
-- dws_risk_monitoring
-- dws_data_quality_summary
-- dwd_futures_trade_exceptions
+- dws_business_indicators：客户 - 品种日频业务指标表
+- 持仓量、成交量、真实盈亏、信用等级、风险敞口
+- dws_risk_monitoring：业务风险监控表
+- 客户信用风险、市场指标超标风险、大额持仓风险
+- dws_data_quality_summary：数据质量异常明细表
+- 缺失客户 ID、金额不一致、交易量异常、重复交易
+- dwd_futures_trade_exceptions：交易异常明细清单
 
 ---
 
@@ -58,15 +62,9 @@
 ## ⚡ Quick Start
 
 ```sql
-CREATE DATABASE risk_dw;
-SOURCE project_main.sql;
+USE XXX;
 ```
 
 ---
 
-## 🎯 Use Cases
-
-- 金融风控
-- 数据仓库建设
-- ETL 面试项目
 
